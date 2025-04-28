@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(135deg, #6a0dad 0%, #c77dff 50%, #ff8c00 100%); 
+        color: #333; 
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        min-height: 100vh;
+    }
+
+
+    

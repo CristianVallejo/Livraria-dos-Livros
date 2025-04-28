@@ -1,0 +1,59 @@
+AuthService
+Gerencia login, logout e armazenamento do token de autenticação, garantindo que o usuário tenha acesso autorizado à aplicação.
+
+AuthGuard
+Protege rotas, permitindo acesso apenas a usuários autenticados, redirecionando para o login quando necessário.
+
+TokenInterceptor
+Adiciona automaticamente o token JWT nas requisições HTTP, garantindo que a API reconheça o usuário autenticado.
+
+livraria-dos-livros/
+├── src/
+│   ├── app/
+│   │   ├── pages/
+│   │   │   ├── inscricao/
+│   │   │   │   ├── inscricao.component.ts
+│   │   │   │   ├── inscricao.component.html
+│   │   │   │   ├── inscricao.component.css
+│   │   │   │   ├── inscricao.component.spec.ts
+│   │   │   ├── cadastro-livros/
+│   │   │   │   ├── cadastro-livros.component.ts
+│   │   │   │   ├── cadastro-livros.component.html
+│   │   │   │   ├── cadastro-livros.component.css
+│   │   │   │   ├── cadastro-livros.component.spec.ts
+│   │   │   ├── estante-livros/
+│   │   │   │   ├── estante-livros.component.ts
+│   │   │   │   ├── estante-livros.component.html
+│   │   │   │   ├── estante-livros.component.css
+│   │   │   │   ├── estante-livros.component.spec.ts
+│   │   ├── auth/ 
+│   │   │   ├── login/
+│   │   │   │   ├── login.component.ts
+│   │   │   │   ├── login.component.html
+│   │   │   │   ├── login.component.css
+│   │   │   │   ├── login.component.spec.ts
+│   │   │   ├── auth.service.ts 
+│   │   │   ├── auth.guard.ts   
+│   │   │   ├── token.interceptor.ts  
+│   │   ├── shared/
+│   │   │   ├── header/
+│   │   │   │   ├── header.component.ts
+│   │   │   │   ├── header.component.html
+│   │   │   │   ├── header.component.css
+│   │   │   ├── footer/
+│   │   │   │   ├── footer.component.ts
+│   │   │   │   ├── footer.component.html
+│   │   │   │   ├── footer.component.css
+│   │   ├── app-routing.module.ts
+│   │   ├── app.component.ts
+│   │   ├── app.component.html
+│   │   ├── app.component.css
+│   │   ├── app.module.ts
+│   ├── assets/
+│   │   ├── images/
+│   ├── environments/
+│   │   ├── environment.ts
+│   │   ├── environment.prod.ts
+├── angular.json
+├── package.json
+├── README.md

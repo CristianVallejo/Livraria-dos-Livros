@@ -1,0 +1,31 @@
+<div class="container-cabecalho">
+  <h1>Seja Bem-Vindo(a) à Estante de livros da Livraria dos Livros</h1>
+</div>
+
+<div *ngIf="errorMessage" class="error">
+  <p>{{ errorMessage }}</p>
+</div>
+
+<div class="container">
+  <ul *ngIf="livros.length > 0">
+    <li *ngFor="let livro of livros">
+      <div class="title-container">
+        <h3>{{ livro.nome }}</h3>
+      </div>
+      <p><strong>Autor:</strong> {{ livro.autor }}</p>
+      <p><strong>Estoque:</strong> {{ livro.estoque }}</p>
+      <p><strong>Cadastrado em:</strong> {{ livro.dtCadastro | date: 'dd/MM/yyyy' }}</p>
+      <div class="container-botoes">
+        <app-excluir-livro
+          [livroSelecionado]="livro"
+          (livroExcluido)="onLivroExcluido($event)">
+        </app-excluir-livro>
+        <button name="editar">EDITAR</button>
+      </div>
+    </li>
+    <button name="novo" routerLink="/cadastro-livros">+</button>
+  </ul>
+  <div *ngIf="livros.length === 0" class="no-books">
+    <p>Não há livros disponíveis.</p>
+  </div>
+</div>

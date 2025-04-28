@@ -1,0 +1,31 @@
+<div class="login-page">
+    <div class="login-card p-card">
+        <h2 class="p-text-center p-text-bold">Bem-vindo a Livraria dos Livros</h2>
+        <p class="p-text-center p-text-secondary">Acesse sua conta</p>
+
+        <form [formGroup]="form" (ngSubmit)="login()" class="p-fluid">
+            <div class="p-field">
+                <label for="login" class="p-text-bold">Login</label>
+                <input id="login" type="text" pInputText formControlName="login" class="futuristic-input"
+                    placeholder="Digite seu nome de usuário" />
+                <small *ngIf="form.get('login')?.invalid && form.get('login')?.touched" class="p-error">
+                    O Login é obrigatório.
+                </small>
+            </div>
+
+            <div class="p-field">
+                <label for="password" class="p-text-bold">Senha</label>
+                <input id="password" formControlName="password" class="futuristic-input" placeholder="Digite sua senha">
+                <small *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="p-error">
+                    A senha é obrigatória.
+                </small>
+            </div>
+            <p *ngIf="errorMessage" class="p-error">{{ errorMessage }}</p> <button pButton type="submit" label="Entrar"
+                class="p-button-rounded p-button-glow p-button-large p-mt-3"></button>
+            <p class="p-text-center p-mt-3">
+                <span class="p-text-secondary">Não tem uma conta?</span>
+                <a routerLink="/register" class="futuristic-link">Cadastre-se</a>
+            </p>
+        </form>
+    </div>
+</div>
