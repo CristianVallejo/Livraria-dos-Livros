@@ -5,6 +5,7 @@ import { InscricaoComponent } from './pages/inscricao/inscricao.component';
 import { AuthGuard } from './auth/auth.guard';
 import { EstanteLivrosComponent } from './pages/estante-livros/estante-livros.component';
 import { NovoLivroComponent } from './pages/cadastro-livros/novo-livro/novo-livro.component';
+import { EditarLivroComponent } from './pages/cadastro-livros/editar-livro/editar-livro.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -12,15 +13,16 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 
   {
-    path: '', 
+    path: '',
     canActivate: [AuthGuard],
     children: [
       { path: 'estante-livros', component: EstanteLivrosComponent },
       { path: 'cadastro-livros', component: NovoLivroComponent },
-      { path: '', redirectTo: '/estante-livros', pathMatch: 'full' } 
+      { path: 'editar-livro/:id', component: EditarLivroComponent },
+      { path: '', redirectTo: '/estante-livros', pathMatch: 'full' }
     ]
   },
-  
+
   { path: '**', redirectTo: '/login' }
 ];
 

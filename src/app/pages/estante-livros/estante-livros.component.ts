@@ -12,6 +12,8 @@ import { LivroService } from '../../Servicos/livros.service';
 export class EstanteLivrosComponent implements OnInit {
   livros: Livro[] = [];
   errorMessage: string = '';
+  router: any;
+  livroSelecionadoParaEdicao: Livro | undefined;
 
   constructor(private livroService: LivroService) { }
 
@@ -34,5 +36,14 @@ export class EstanteLivrosComponent implements OnInit {
   onLivroExcluido(idExcluido: number): void {
     this.livros = this.livros.filter(l => l.id !== idExcluido);
   }
+
+  mostrarEdicao(livro: Livro): void {
+    this.livroSelecionadoParaEdicao = livro;
+  }
+  
+  onLivroEditado(livroEditado: Livro): void {
+    // this.livroSelecionadoParaEdicao = livroEditado;  
+  }
+
 
 }

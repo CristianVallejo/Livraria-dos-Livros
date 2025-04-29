@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';  // Adicionado para garantir que o HttpClient seja importado corretamente
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,8 +40,10 @@ import { ExcluirLivroComponent } from './pages/cadastro-livros/excluir-livro/exc
     PasswordModule,
     HttpClientModule,
 
+
   ],
   providers: [provideHttpClient(withInterceptorsFromDi())],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule { }

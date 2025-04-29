@@ -12,15 +12,18 @@
       <div class="title-container">
         <h3>{{ livro.nome }}</h3>
       </div>
+      <p><strong>Id:</strong>{{livro.id}}</p>
       <p><strong>Autor:</strong> {{ livro.autor }}</p>
       <p><strong>Estoque:</strong> {{ livro.estoque }}</p>
       <p><strong>Cadastrado em:</strong> {{ livro.dtCadastro | date: 'dd/MM/yyyy' }}</p>
       <div class="container-botoes">
-        <app-excluir-livro
-          [livroSelecionado]="livro"
-          (livroExcluido)="onLivroExcluido($event)">
-        </app-excluir-livro>
-        <button name="editar">EDITAR</button>
+        <app-excluir-livro [livroSelecionado]="livro" (livroExcluido)="onLivroExcluido($event)"></app-excluir-livro>
+        <button type="button" name="editar" [routerLink]="['/editar-livro', livro.id]" (click)="mostrarEdicao(livro)">
+          EDITAR
+        </button>
+        <app-editar-livro *ngIf="livroSelecionadoParaEdicao?.id === livro.id" [livroSelecionado]="livro"
+          (livroEditado)="onLivroEditado($event)">
+        </app-editar-livro>
       </div>
     </li>
     <button name="novo" routerLink="/cadastro-livros">+</button>

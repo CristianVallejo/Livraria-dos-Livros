@@ -1,1 +1,22 @@
-<p>editar-livro works!</p>
+<form [formGroup]="form" (ngSubmit)="editarLivro()">
+  <div>
+    <label for="id">Id do Livro</label>
+    <input id="id" formControlName="id">
+  </div>
+  <div>
+    <label for="nome">Nome do Livro</label>
+    <input id="nome" formControlName="nome">
+  </div>
+
+  <div>
+    <label for="autor">Autor</label>
+    <input id="autor" formControlName="autor">
+  </div>
+
+  <div>
+    <label for="estoque">Estoque</label>
+    <input id="estoque" formControlName="estoque" type="number">
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Salvar</button>
+</form>

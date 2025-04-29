@@ -10,7 +10,7 @@ import { Livro } from '../../../models/livros';
 })
 export class ExcluirLivroComponent implements OnInit {
   @Input() livroSelecionado: Livro | null = null;
-  @Output() livroExcluido = new EventEmitter<number>(); // emite o id do livro
+  @Output() livroExcluido = new EventEmitter<number>();
 
   livros: Livro[] = [];
   errorMessage: string = '';
@@ -47,7 +47,6 @@ export class ExcluirLivroComponent implements OnInit {
         }
       });
     } else {
-      // Caso livroSelecionado seja nulo ou id inválido
       console.error('Livro não selecionado ou ID inválido');
       this.errorMessage = 'Livro não selecionado ou ID inválido';
     }

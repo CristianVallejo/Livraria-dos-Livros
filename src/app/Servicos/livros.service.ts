@@ -18,6 +18,13 @@ export class LivroService {
     return this.http.get<Livro[]>(this.apiurl, { headers });
   }
 
+  getLivroById(id: number): Observable<Livro> {
+    const token = localStorage.getItem('tokenApi');
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
+
+    return this.http.get<Livro>(`${this.apiurl}/${id}`, { headers });
+  }
+
   postLivro(livro: Livro): Observable<Livro> {
     const token = localStorage.getItem('tokenApi');
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
