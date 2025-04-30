@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Livro } from '../../../models/livros';
 import { LivroService } from '../../../Servicos/livros.service';
@@ -9,48 +9,46 @@ import { LivroService } from '../../../Servicos/livros.service';
   templateUrl: './editar-livro.component.html',
   styleUrls: ['./editar-livro.component.scss']
 })
-export class EditarLivroComponent implements OnInit {
+export class EditarLivroComponent implements OnChanges {
   @Input() livroSelecionado: Livro | null = null;
   @Output() livroEditado = new EventEmitter<Livro>();
+  @Output() fecharModal = new EventEmitter<boolean>();
+
   form!: FormGroup;
-  livroRetornado: Livro | undefined;
 
-  constructor(private fb: FormBuilder, private livroService: LivroService) { }
+  constructor(
+    private fb: FormBuilder,
+    private livroService: LivroService,
+  ) { }
 
-  ngOnInit(): void {
-    this.carregaLivro();
-  }
-
-  carregaLivro() {
-    if (this.livroSelecionado?.id !== undefined) {
-      this.livroService.getLivroById(this.livroSelecionado.id).subscribe({
-        next: (livro) => {
-          this.livroRetornado = livro;
-  
-          this.form = this.fb.group({
-            id: [livro.id],
-            nome: [livro.nome || '', Validators.required],
-            autor: [livro.autor || '', Validators.required],
-            estoque: [livro.estoque || '', [Validators.required, Validators.min(0)]]
-          });
-        },
-        error: (err) => {
-          console.error('Erro ao carregar o livro:', err);
-        }
-      });
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['livroSelecionado'] && this.livroSelecionado) {
+      this.criarFormulario();
     } else {
-      console.error('ID do livro é indefinido');
+      console.log("Deus eu te amo")
+
     }
   }
 
-  editarLivro(): void {
+
+  criarFormulario(): void {
+    this.form = this.fb.group({
+      id: [this.livroSelecionado?.id],
+      nome: [this.livroSelecionado?.nome, Validators.required],
+      autor: [this.livroSelecionado?.autor, Validators.required],
+      estoque: [this.livroSelecionado?.estoque, Validators.required],
+      dtCadastro: [this.livroSelecionado?.dtCadastro]
+    });
+  }
+
+
+  salvarEdicao() {
     if (this.form.valid) {
-      const livroEditado: Livro = this.form.value;
-      this.livroEditado.emit(livroEditado);
-    } else {
-      console.log('Formulário inválido');
+      this.livroEditado.emit(this.form.value);
     }
   }
 
-
+  cancelarEdicao() {
+    this.fecharModal.emit();
+  }
 }

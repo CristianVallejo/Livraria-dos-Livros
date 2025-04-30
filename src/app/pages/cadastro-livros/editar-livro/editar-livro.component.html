@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="editarLivro()">
+<form [formGroup]="form">
   <div>
     <label for="id">Id do Livro</label>
     <input id="id" formControlName="id">
@@ -18,5 +18,6 @@
     <input id="estoque" formControlName="estoque" type="number">
   </div>
 
-  <button type="submit" [disabled]="form.invalid">Salvar</button>
+  <button type="button" [disabled]="form.invalid">SALVAR</button>
+  <button type="button" (click)="cancelarEdicao()">CANCELAR</button>
 </form>

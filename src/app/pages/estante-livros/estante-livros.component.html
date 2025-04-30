@@ -18,12 +18,7 @@
       <p><strong>Cadastrado em:</strong> {{ livro.dtCadastro | date: 'dd/MM/yyyy' }}</p>
       <div class="container-botoes">
         <app-excluir-livro [livroSelecionado]="livro" (livroExcluido)="onLivroExcluido($event)"></app-excluir-livro>
-        <button type="button" name="editar" [routerLink]="['/editar-livro', livro.id]" (click)="mostrarEdicao(livro)">
-          EDITAR
-        </button>
-        <app-editar-livro *ngIf="livroSelecionadoParaEdicao?.id === livro.id" [livroSelecionado]="livro"
-          (livroEditado)="onLivroEditado($event)">
-        </app-editar-livro>
+        <button type="button" name="editar" (click)="editarlivro(livro)">EDITAR</button>
       </div>
     </li>
     <button name="novo" routerLink="/cadastro-livros">+</button>
@@ -32,3 +27,10 @@
     <p>Não há livros disponíveis.</p>
   </div>
 </div>
+
+
+<p-dialog class="modalEditar" [(visible)]="modalAberto" [modal]="true" [closable]="true" (onHide)="modalAberto = false">
+  <app-editar-livro *ngIf="modalAberto" [livroSelecionado?]="livroSelecionadoParaEdicao"
+    (livroEditado)="onLivroEditado($event)" (fecharModal)="cancelarEdicao()">
+  </app-editar-livro>
+</p-dialog>

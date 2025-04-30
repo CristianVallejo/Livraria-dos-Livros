@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Livro } from '../../models/livros';
 import { LivroService } from '../../Servicos/livros.service';
+import { NgModel } from '@angular/forms';
 
 
 @Component({
@@ -14,6 +15,8 @@ export class EstanteLivrosComponent implements OnInit {
   errorMessage: string = '';
   router: any;
   livroSelecionadoParaEdicao: Livro | undefined;
+  modalAberto: boolean | undefined;
+
 
   constructor(private livroService: LivroService) { }
 
@@ -37,13 +40,21 @@ export class EstanteLivrosComponent implements OnInit {
     this.livros = this.livros.filter(l => l.id !== idExcluido);
   }
 
-  mostrarEdicao(livro: Livro): void {
+  editarlivro(livro: Livro): void {
     this.livroSelecionadoParaEdicao = livro;
+    this.modalAberto = true;
   }
-  
-  onLivroEditado(livroEditado: Livro): void {
-    // this.livroSelecionadoParaEdicao = livroEditado;  
+
+  cancelarEdicao() {
+    this.modalAberto = false;
   }
+
+
+  onLivroEditado(livro: Livro): void {
+    console.log('Livro editado:', livro);
+    this.modalAberto = false;
+  }
+
 
 
 }

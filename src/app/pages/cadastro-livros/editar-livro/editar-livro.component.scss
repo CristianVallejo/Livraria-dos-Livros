@@ -46,6 +46,7 @@ form {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: 10px;
   }
   
   button:hover {
@@ -108,8 +109,7 @@ form {
   strong {
     color: #6a11cb;
   }
-  
-  /* Estilo do Cabeçalho */
+
   .container-cabecalho h1 {
     font-size: 30px;
     color: #ffb347;
@@ -118,19 +118,3 @@ form {
     text-align: center;
     margin: 20px auto;
   }
-  
-  /* Estilo para o Botão Novo */
-  button[name="novo"] {
-    font-size: 1.5rem;
-    border-radius: 10px;
-    background: linear-gradient(90deg, #6a11cb 0%, #ffb347 100%);
-    border: none;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  button[name="novo"]:hover {
-    background: linear-gradient(90deg, #ffb347 0%, #6a11cb 100%);
-  }
-  

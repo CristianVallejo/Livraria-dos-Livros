@@ -11,7 +11,7 @@ import { Router } from '@angular/router'; // Importando o Router
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  form!: FormGroup;
+  form!: FormGroup; // FormGroup deve ser inicializado no ngOnInit
   errorMessage: string = ''; // Propriedade para armazenar mensagens de erro
 
   constructor(
@@ -21,20 +21,23 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Inicializando o formulário reativo com validadores
     this.form = this.fb.group({
-      login: ['', Validators.required],
-      password: ['', Validators.required]
+      login: ['', [Validators.required]], // Validação de campo obrigatório
+      password: ['', [Validators.required]] // Validação de campo obrigatório
     });
   }
 
   login(): void {
     this.errorMessage = ''; // Limpa mensagens de erro anteriores
 
-    const dados = {
+    // Definindo tipo para os dados enviados no login
+    const dados: { Login: string; Password: string } = {
       Login: this.form.value.login,
       Password: this.form.value.password
     };
 
+    // Chamando o serviço de autenticação
     this.authService.login(dados).subscribe({
       next: (response: any) => {
         console.log('Login bem-sucedido:', response);
@@ -50,6 +53,7 @@ export class LoginComponent implements OnInit {
       error: (error: HttpErrorResponse) => {
         console.error('Erro ao fazer login:', error);
 
+        // Verificando o tipo de erro para gerar a mensagem adequada
         if (error.error instanceof ErrorEvent) {
           this.errorMessage = `Erro de rede: ${error.error.message}`;
         } else {
@@ -59,9 +63,6 @@ export class LoginComponent implements OnInit {
               : `Erro inesperado. Código: ${error.status}, Mensagem: ${error.message}`;
         }
       },
-      complete: () => {
-        console.log('Processo de login concluído.');
-      }
-    });
+    }); // <-- Aqui estava faltando o fechamento do parêntese
   }
 }
