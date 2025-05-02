@@ -32,9 +32,16 @@ export class LivroService {
     return this.http.post<Livro>(this.apiurl, livro, { headers });
   }
 
+  putLivro(livro: Livro): Observable<Livro> {
+    const token = localStorage.getItem('tokenApi');
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
+    return this.http.put<Livro>(`${this.apiurl}/${livro.id}`, livro, { headers });
+  }
+
   deleteLivro(id: number): Observable<void> {
     const token = localStorage.getItem('tokenApi');
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
     return this.http.delete<void>(`${this.apiurl}/${id}`, { headers });
   }
+
 }

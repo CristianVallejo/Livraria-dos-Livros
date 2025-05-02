@@ -1,24 +1,19 @@
-<div class="container-cabecalho">
-  <h1>Seja Bem-Vindo(a) à Estante de livros da Livraria dos Livros</h1>
-</div>
-
-<div *ngIf="errorMessage" class="error">
-  <p>{{ errorMessage }}</p>
-</div>
-
-<div class="container">
+<h1 class="container-cabecalho">Seja Bem-Vindo(a) à Estante de livros da Livraria dos Livros</h1>
+<div class="container-lista-livros">
   <ul *ngIf="livros.length > 0">
     <li *ngFor="let livro of livros">
       <div class="title-container">
         <h3>{{ livro.nome }}</h3>
       </div>
-      <p><strong>Id:</strong>{{livro.id}}</p>
-      <p><strong>Autor:</strong> {{ livro.autor }}</p>
-      <p><strong>Estoque:</strong> {{ livro.estoque }}</p>
-      <p><strong>Cadastrado em:</strong> {{ livro.dtCadastro | date: 'dd/MM/yyyy' }}</p>
+      <div class="container-item">
+        <p><strong>Id:</strong>{{livro.id}}</p>
+        <p><strong>Autor:</strong> {{ livro.autor }}</p>
+        <p><strong>Estoque:</strong> {{ livro.estoque }}</p>
+        <p><strong>Cadastro:</strong> {{ livro.dtCadastro | date: 'dd/MM/yyyy' }}</p>
+      </div>
       <div class="container-botoes">
-        <app-excluir-livro [livroSelecionado]="livro" (livroExcluido)="onLivroExcluido($event)"></app-excluir-livro>
         <button type="button" name="editar" (click)="editarlivro(livro)">EDITAR</button>
+        <button type="button" name="excluir" (click)="excluirLivro(livro)">EXCLUIR</button>
       </div>
     </li>
     <button name="novo" routerLink="/cadastro-livros">+</button>
@@ -28,9 +23,8 @@
   </div>
 </div>
 
-
-<p-dialog class="modalEditar" [(visible)]="modalAberto" [modal]="true" [closable]="true" (onHide)="modalAberto = false">
-  <app-editar-livro *ngIf="modalAberto" [livroSelecionado?]="livroSelecionadoParaEdicao"
+<p-dialog class="modalEditar" [(visible)]="modalAberto" [modal]="true" [closable]="true" (onHide)="cancelarEdicao()">
+  <app-editar-livro *ngIf="modalAberto" [livroSelecionado]="livroSelecionadoParaEdicao"
     (livroEditado)="onLivroEditado($event)" (fecharModal)="cancelarEdicao()">
   </app-editar-livro>
 </p-dialog>

@@ -14,8 +14,10 @@ export class EstanteLivrosComponent implements OnInit {
   livros: Livro[] = [];
   errorMessage: string = '';
   router: any;
-  livroSelecionadoParaEdicao: Livro | undefined;
+  livroSelecionadoParaEdicao: Livro | null = null;
   modalAberto: boolean | undefined;
+  livroSelecionado: any;
+
 
 
   constructor(private livroService: LivroService) { }
@@ -35,10 +37,22 @@ export class EstanteLivrosComponent implements OnInit {
     })
   }
 
-
-  onLivroExcluido(idExcluido: number): void {
-    this.livros = this.livros.filter(l => l.id !== idExcluido);
+  excluirLivro(livro: Livro): void {
+    if (livro.id !== undefined) {
+      this.livroService.deleteLivro(livro.id).subscribe(
+        (response) => {
+          console.log('Livro excluído com sucesso!');
+          this.carregarLivros();
+        },
+        (error) => {
+          console.error('Erro ao excluir livro:', error);
+        }
+      );
+    } else {
+      console.error('Erro: ID do livro não encontrado');
+    }
   }
+
 
   editarlivro(livro: Livro): void {
     this.livroSelecionadoParaEdicao = livro;
@@ -50,10 +64,11 @@ export class EstanteLivrosComponent implements OnInit {
   }
 
 
-  onLivroEditado(livro: Livro): void {
-    console.log('Livro editado:', livro);
+  onLivroEditado(livroEditado: Livro): void {
     this.modalAberto = false;
+    this.carregarLivros();
   }
+
 
 
 

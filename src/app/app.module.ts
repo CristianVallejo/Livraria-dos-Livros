@@ -16,7 +16,6 @@ import { PasswordModule } from 'primeng/password';
 import { EstanteLivrosComponent } from './pages/estante-livros/estante-livros.component';
 import { NovoLivroComponent } from './pages/cadastro-livros/novo-livro/novo-livro.component';
 import { EditarLivroComponent } from './pages/cadastro-livros/editar-livro/editar-livro.component';
-import { ExcluirLivroComponent } from './pages/cadastro-livros/excluir-livro/excluir-livro.component';
 
 
 
@@ -30,7 +29,7 @@ import { ExcluirLivroComponent } from './pages/cadastro-livros/excluir-livro/exc
     EstanteLivrosComponent,
     NovoLivroComponent,
     EditarLivroComponent,
-    ExcluirLivroComponent
+
   ],
   imports: [
     BrowserModule,

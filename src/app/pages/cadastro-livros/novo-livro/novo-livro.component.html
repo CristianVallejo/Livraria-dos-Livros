@@ -1,9 +1,9 @@
 <div class="form-container">
-    <h2>Cadastro de Livro</h2>
+    <h2>CADASTRO DE LIVRO</h2>
 
     <form [formGroup]="form">
         <div class="form-group">
-            <label for="nome">Nome do Livro</label>
+            <label for="nome">TÍTULO</label>
             <input id="nome" type="text" formControlName="nome" />
             <div class="error" *ngIf="form.get('nome')?.touched && form.get('nome')?.invalid">
                 Nome do livro é obrigatório.
@@ -11,7 +11,7 @@
         </div>
 
         <div class="form-group">
-            <label for="autor">Autor</label>
+            <label for="autor">AUTOR</label>
             <input id="autor" type="text" formControlName="autor" />
             <div class="error" *ngIf="form.get('autor')?.touched && form.get('autor')?.invalid">
                 Autor é obrigatório.
@@ -19,15 +19,15 @@
         </div>
 
         <div class="form-group">
-            <label for="estoque">Quantidade em Estoque</label>
+            <label for="estoque">QTD. ESTOQUE</label>
             <input id="estoque" type="number" formControlName="estoque" min="0" />
             <div class="error" *ngIf="form.get('estoque')?.touched && form.get('estoque')?.invalid">
                 Estoque deve ser zero ou maior.
             </div>
         </div>
 
-        <button type="submit" (click)="cadastrarLivro()">Cadastrar Livro</button>
+        <button type="submit" (click)="cadastrarLivro()">CADASTRAR LIVRO</button>
         <h1>{{titulo}}</h1>
-        <button type="submit" routerLink="/estante-livros">Voltar para Estante de Livros</button>
+        <button type="submit" routerLink="/estante-livros">VOLTAR PARA ESTANTE DE LIVROS</button>
     </form>
 </div>
