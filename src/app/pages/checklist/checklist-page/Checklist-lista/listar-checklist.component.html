@@ -1,0 +1,28 @@
+<div>
+  <p-card *ngFor="let checklist of checklists" class="grid gap-4">
+    <div>
+      <div>
+        <label>ID</label>
+        <input value="{{ checklist.id }}" />
+      </div>
+      <div>
+        <label>NOME</label>
+        <input value="{{ checklist.nome }}" />
+      </div>
+      <div>
+        <label>ID USUÁRIO</label>
+        <input value="{{ checklist.idUsuario }}" />
+      </div>
+      <div>
+        <label>DATA CRIAÇÃO</label>
+        <input value="{{ checklist.dataCriacao }}" />
+      </div>
+      <div>
+        <label>ITENS</label>
+        <app-checklist-itens-lista
+          [checklist]="checklist"
+        ></app-checklist-itens-lista>
+      </div>
+    </div>
+  </p-card>
+</div>

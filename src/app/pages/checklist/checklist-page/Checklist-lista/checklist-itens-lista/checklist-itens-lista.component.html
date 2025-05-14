@@ -1,0 +1,6 @@
+<div *ngFor="let item of checklist.itens">
+  <label> ID ITEM </label>
+  <input type="number" value="{{ item.id }}" readonly />
+  <label> DESCRIÇÃO </label>
+  <input type="text" value="  {{ item.descricao }}" />
+</div>

@@ -1,0 +1,28 @@
+<div class="flex justify-content-center" style="background: linear-gradient(#ffb347)">
+  <h1>LISTA DE CHECKLISTS</h1>
+</div>
+
+<p-button label="NOVsssssO CHECKLIST" (onClick)="abrirModalCadastro()"></p-button>
+
+
+<app-listar-checklist></app-listar-checklist>
+
+
+<p-dialog [(visible)]="ModalCadastroAberto" [modal]="true" [style]="{ width: '80vw', height: '80vh' }" styleClass="p-0">
+
+  <div class="grid gap-1 mt-1  ">
+    <div class="col-6 p-4 border-1" style="width: 49%">
+      <div>
+        <h1>FORMULÁRIO</h1>
+      </div>
+      <app-cadastro-editar-checklist></app-cadastro-editar-checklist>
+    </div>
+    <div class="col-6 p-4 border-1" style="width: 49%; height: 600px">
+      <div>
+        <h1>LISTA ITENS</h1>
+      </div>
+      <app-cadastro-editar-checklist-lista></app-cadastro-editar-checklist-lista>
+    </div>
+  </div>
+
+</p-dialog>

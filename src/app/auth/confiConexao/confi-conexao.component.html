@@ -1,0 +1,56 @@
+<div class="relative justify-content-center align-items-start ">
+    <h1 class="text-xl ">CONFIGURAÇÃO BANCO DE DADOS</h1>
+</div>
+
+<div>
+    <h3 [ngClass]="{'bg-primary-700': mensagemErro == false, 'bg-red-600': mensagemErro == true}"
+        *ngIf="mensagem">
+        {{ mensagem }}
+    </h3>
+    </div>
+<div>
+    <form [formGroup]="form">
+
+        <div class="field grid">
+            <label for="ipBanco" class="col-fixed w-10rem">IP DO BANCO</label>
+            <div class="col">
+                <input id="ipBanco" type="text" pInputText formControlName="IpBanco"
+                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+            </div>
+        </div>
+
+        <div class="field grid">
+            <label for="nomeBanco" class="col-fixed w-10rem">NOME DO BANCO</label>
+            <div class="col">
+                <input id="nomeBanco" type="text" pInputText formControlName="NomeBanco"
+                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+            </div>
+        </div>
+
+        <div class="field grid">
+            <label for="usuarioBanco" class="col-fixed w-10rem">USUÁRIO DO BANCO</label>
+            <div class="col">
+                <input id="usuarioBanco" type="text" pInputText formControlName="UsuarioBanco"
+                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+            </div>
+        </div>
+
+        <div class="field grid">
+            <label for="senhaBanco" class="col-fixed w-10rem">SENHA DO BANCO</label>
+            <div class="col">
+                <input id="senhaBanco" [type]="senhaVisivel ? 'text' : 'password'" pInputText
+                    formControlName="SenhaBanco"
+                    class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+            </div>
+            <p-button type="button" (click)="alternarVisibilidadeSenha()">
+                <i [class]="'pi ' + (senhaVisivel ? 'pi-eye' : 'pi-eye-slash')"></i>
+            </p-button>
+        </div>
+
+        <div class="flex flex-column gap-2 ml-5">
+            <p-button label="SALVAR" styleClass="w-20rem " (onClick)="ConfigurarConexaoNova()"></p-button>
+            <p-button label="CANCELAR" styleClass="w-20rem" (onClick)="fecharModal()"></p-button>
+        </div>
+
+    </form>
+</div>

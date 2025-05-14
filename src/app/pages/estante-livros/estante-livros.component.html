@@ -1,0 +1,44 @@
+<h1 class="container-cabecalho">
+  Seja Bem-Vindo(a) à Estante de livros da Livraria dos Livros
+</h1>
+<div class="container-button-checklist">
+  <button type="button" name="checkist" routerLink="/checklists-page">
+    CHECKLISTS
+  </button>
+</div>
+<div class="container-lista-livros">
+  <ul *ngIf="livros.length > 0">
+    <li *ngFor="let livro of livros">
+      <div class="title-container">
+        <h3>{{ livro.nome }}</h3>
+      </div>
+      <div class="container-item">
+        <p><strong>Id:</strong>{{ livro.id }}</p>
+        <p><strong>Autor:</strong> {{ livro.autor }}</p>
+        <p><strong>Estoque:</strong> {{ livro.estoque }}</p>
+        <p>
+          <strong>Cadastro:</strong>
+          {{ livro.dtCadastro | date : "dd/MM/yyyy" }}
+        </p>
+      </div>
+      <div class="container-botoes">
+        <button type="button" name="editar" (click)="editarlivro(livro)">
+          EDITAR
+        </button>
+        <button type="button" name="excluir" (click)="excluirLivro(livro)">
+          EXCLUIR
+        </button>
+      </div>
+    </li>
+    <button name="novo" routerLink="/cadastro-livros">+</button>
+  </ul>
+  <div *ngIf="livros.length === 0" class="no-books">
+    <p>Não há livros disponíveis.</p>
+  </div>
+</div>
+
+<p-dialog [(visible)]="modalAberto" [modal]="true" [blockScroll]="true" [closable]="true" (onHide)="cancelarEdicao()">
+  <app-editar-livro *ngIf="modalAberto" [livroSelecionado]="livroSelecionadoParaEdicao"
+    (livroEditado)="onLivroEditado($event)" (fecharModal)="cancelarEdicao()">
+  </app-editar-livro>
+</p-dialog>

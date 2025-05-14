@@ -1,0 +1,96 @@
+.container-cabecalho {
+  margin-top: 0;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  align-items: center;
+  background: linear-gradient(#ffb347);
+}
+
+ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-left: -30px;
+  margin-right: 10px;
+  align-items: stretch;
+}
+
+li {
+  background: antiquewhite;
+  border-radius: 10px;
+  list-style: none;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  height: 100%;
+}
+
+.container-item {
+  flex: 1;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+p {
+  margin-left: 10px;
+}
+
+button[name="editar"],
+button[name="excluir"] {
+  margin-top: 2px;
+  background: linear-gradient(90deg, #6a11cb 0%, #ffb347 100%);
+  border: none;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  height: 40px;
+  text-align: center;
+  width: 110.9px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+button[name="novo"] {
+  font-size: 50px;
+  background: linear-gradient(90deg, #6a11cb 0%, #ffb347 100%);
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.container-button-checklist {
+  display: flex;
+  gap: 10px;
+  margin-left: 65.9%;
+}
+
+button[name="checkist"] {
+  background: linear-gradient(90deg, #6a11cb 0%, #ffb347 100%);
+  border: none;
+  color: white;
+  cursor: pointer;
+  height: 40px;
+  text-align: center;
+  width: 200px;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin-left: 425px;
+}
+
+.title-container {
+  display: flex;
+  background: linear-gradient(90deg, #6a11cb 0%, #ffb347 100%);
+  color: white;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  max-height: calc(1.2em * 4);
+}

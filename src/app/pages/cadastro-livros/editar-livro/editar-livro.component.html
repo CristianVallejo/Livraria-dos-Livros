@@ -1,0 +1,35 @@
+<form *ngIf="form" [formGroup]="form" class="form-editar-livro">
+  <div class="title-form">
+    <h1>Edição de Livro</h1>
+  </div>
+  <div>
+    <label for="id">Id</label>
+    <input id="id" [readonly]="true" formControlName="id" />
+  </div>
+  <div>
+    <label for="nome">Nome</label>
+    <input id="nome" formControlName="nome" />
+  </div>
+
+  <div>
+    <label for="autor">Autor</label>
+    <input id="autor" formControlName="autor" />
+  </div>
+
+  <div>
+    <label for="estoque">Estoque</label>
+    <input id="estoque" formControlName="estoque" type="number" />
+  </div>
+
+  <div>
+    <label for="dtCadastro">Data de Cadastro</label>
+    <input id="dtCadastro" [readonly]="true" formControlName="dtCadastro"
+      [value]="form.get('dtCadastro')?.value | date:'dd/MM/yy'" />
+  </div>
+
+
+
+
+  <button type="button" name="salvar" [disabled]="!form.dirty" (click)="salvarEdicao()">SALVAR</button>
+  <button type="button" name="cancelar" (click)="cancelarEdicao()">CANCELAR</button>
+</form>
