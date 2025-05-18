@@ -1,39 +1,56 @@
-<div class="flex flex-colunm gap-2">
-  <p-card
-    *ngFor="let checklist of checklists"
-    styleClass="w-30rem overflow-y-auto"
-  >
+<div class="flex flex-column gap-2">
+  <p-card *ngFor="let checklist of checklists" styleClass="w-full -ml-3 overflow-y-auto">
     <p-accordion [multiple]="true">
-      <p-accordion-tab header="CHECKLIST">
-        <div class="flex flex-column gap-3">
+      <p-accordion-tab>
+
+        <!-- Acorddion -->
+        <ng-template pTemplate="header">
+          <div class="flex justify-between align-items-center w-full">
+            <span>CHECKLIST ({{ checklist.nome }})</span>
+          </div>
+          <div class="flex gap-2 ">
+            <button pButton type="button" class="p-button-primary"
+              (click)="editarChecklist(checklist); $event.stopPropagation() ">
+              <i class="pi pi-pencil"></i>
+              <span class="ml-2">EDITAR</span> </button>
+            <button pButton type="button" class="p-button-danger"
+              (click)="excluirChecklist(checklist.id!); $event.stopPropagation() ">
+              <i class="pi pi-trash"></i>
+              <span class="ml-2">EXCLUIR</span> </button>
+          </div>
+
+        </ng-template>
+
+        <!-- CHECKLIST -->
+        <div class="flex flex-column gap-3 mt-2">
           <div class="flex flex-column">
             <label>ID</label>
-            <input value="{{ checklist.id }}" disabled />
+            <input [value]="checklist.id" disabled />
           </div>
           <div class="flex flex-column">
             <label>NOME</label>
-            <input value="{{ checklist.nome }}" />
+            <input [value]="checklist.nome" />
           </div>
           <div class="flex flex-column">
             <label>ID USUÁRIO</label>
-            <input value="{{ checklist.idUsuario }}" disabled />
+            <input [value]="checklist.idUsuario" disabled />
           </div>
           <div class="flex flex-column">
             <label>DATA CRIAÇÃO</label>
-            <input
-              value="{{ checklist.dataCriacao | date : 'dd/MM/yyyy' }}"
-              disabled
-            />
+            <input [value]="checklist.dataCriacao | date: 'dd/MM/yyyy'" disabled />
           </div>
-          <div class="flex flex-column">
+
+          <!-- ITENS DO CHECKLIST -->
+          <p-accordion [multiple]="true">
             <p-accordion-tab header="ITENS">
-              <app-checklist-itens-lista
-                [checklist]="checklist"
-              ></app-checklist-itens-lista>
+              <app-checklist-itens-lista [checklist]="checklist"></app-checklist-itens-lista>
             </p-accordion-tab>
-          </div>
+
+          </p-accordion>
         </div>
       </p-accordion-tab>
     </p-accordion>
   </p-card>
 </div>
+
+<p>{{mensagem}}</p>

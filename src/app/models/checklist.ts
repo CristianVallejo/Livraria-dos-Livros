@@ -8,7 +8,14 @@ export interface Checklist {
 
 export interface ChecklistItem {
   id?: number;
-  idChecklist: number | null;
+  idChecklist?: number | null;
   descricao: string;
+  resposta: RespostaChecklist;
 }
 
+export enum RespostaChecklist {
+  Atende = 1,
+  NaoAtende = 2,
+  NaoSeAplica = 3,
+  NaoRealizado = 4
+}

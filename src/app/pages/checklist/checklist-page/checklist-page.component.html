@@ -7,7 +7,8 @@
 </div>
 
 <div class="flex flex-column ml-5">
-  <app-listar-checklist></app-listar-checklist>
+  <app-listar-checklist [recarregarLista]="retornoListaChecklista"
+    (checklistParaEdicao)="receberChecklistEditar($event)"></app-listar-checklist>
 </div>
 
 <p-dialog [(visible)]="ModalCadastroAberto" [modal]="true" [style]="{ width: '80vw', height: '80vh' }" styleClass="p-0">
@@ -17,7 +18,8 @@
         <h1>FORMULÁRIO</h1>
       </div>
       <app-cadastro-editar-checklist (fecharModal)="fechaModalCadatro()"
-        (item)="recebeItem($event);  "></app-cadastro-editar-checklist>
+        (recarregarLista)="recarregarListaChecklists($event)" (item)="recebeItem($event);"
+        [checkListParaEdicao]="retornoChecklistEditar"></app-cadastro-editar-checklist>
     </div>
     <div class="col-6 p-4 border-1" style="width: 49%; height: 600px">
       <div>
