@@ -8,7 +8,7 @@ import { ChecklistItem } from '../../../../../models/checklist';
   styleUrl: './cadastro-editar-checklist-lista.component.scss'
 })
 export class CadastroEditarChecklistListaComponent implements OnInit {
-  @Input() itensChecklist!: ChecklistItem;
+  @Input() itensChecklist: ChecklistItem[] = [];
 
 
 

@@ -1,6 +1,14 @@
-<div *ngFor="let item of checklist.itens">
-  <label> ID ITEM </label>
-  <input type="number" value="{{ item.id }}" readonly />
-  <label> DESCRIÇÃO </label>
-  <input type="text" value="  {{ item.descricao }}" />
+<div class="flex justify-content-between align-items-center">
+  <p-button icon="pi pi-plus"></p-button>
+</div>
+
+<div *ngFor="let item of checklist.itens" class="flex flex-column gap-3">
+  <div class="flex flex-column">
+    <label> ID ITEM </label>
+    <input type="number" value="{{ item.id }}" disabled />
+  </div>
+  <div class="flex flex-column">
+    <label> DESCRIÇÃO </label>
+    <input type="text" value="  {{ item.descricao }}" />
+  </div>
 </div>

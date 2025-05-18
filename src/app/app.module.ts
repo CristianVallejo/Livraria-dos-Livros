@@ -33,6 +33,7 @@ import { ChecklistItensComponent } from './pages/checklist/checklist-page/Checkl
 import { ListarChecklistComponent } from './pages/checklist/checklist-page/Checklist-lista/listar-checklist.component';
 import { CadastroEditarChecklistComponent } from './pages/checklist/checklist-page/cadastro-editar-checklist/cadastro-editar-checklist.component';
 import { CadastroEditarChecklistListaComponent } from './pages/checklist/checklist-page/cadastro-editar-checklist/cadastro-editar-checklist-lista/cadastro-editar-checklist-lista.component';
+import { AccordionModule } from 'primeng/accordion';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { CadastroEditarChecklistListaComponent } from './pages/checklist/checkli
     HttpClientModule,
     DialogModule,
     CardModule,
+    AccordionModule,
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),

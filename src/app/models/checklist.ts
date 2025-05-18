@@ -3,18 +3,12 @@ export interface Checklist {
   nome: string;
   idUsuario: number;
   dataCriacao?: Date;
-  itens: ChecklistItem[];
+  itens?: ChecklistItem[];
 }
 
 export interface ChecklistItem {
   id?: number;
-  idChecklist: number;
+  idChecklist: number | null;
   descricao: string;
-  resposta: RespostaChecklist;
 }
 
-export enum RespostaChecklist {
-  Atende = 1,
-  NaoAtende = 2,
-  NaoSeAplica = 3
-}

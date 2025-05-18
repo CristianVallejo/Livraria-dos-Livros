@@ -2,27 +2,28 @@
   <h1>LISTA DE CHECKLISTS</h1>
 </div>
 
-<p-button label="NOVsssssO CHECKLIST" (onClick)="abrirModalCadastro()"></p-button>
+<div class="p-4">
+  <p-button label="NOVO CHECKLIST" (onClick)="abrirModalCadastro()"></p-button>
+</div>
 
-
-<app-listar-checklist></app-listar-checklist>
-
+<div class="flex flex-column ml-5">
+  <app-listar-checklist></app-listar-checklist>
+</div>
 
 <p-dialog [(visible)]="ModalCadastroAberto" [modal]="true" [style]="{ width: '80vw', height: '80vh' }" styleClass="p-0">
-
-  <div class="grid gap-1 mt-1  ">
+  <div class="grid gap-1 mt-1">
     <div class="col-6 p-4 border-1" style="width: 49%">
       <div>
         <h1>FORMULÁRIO</h1>
       </div>
-      <app-cadastro-editar-checklist></app-cadastro-editar-checklist>
+      <app-cadastro-editar-checklist (fecharModal)="fechaModalCadatro()"
+        (item)="recebeItem($event);  "></app-cadastro-editar-checklist>
     </div>
     <div class="col-6 p-4 border-1" style="width: 49%; height: 600px">
       <div>
         <h1>LISTA ITENS</h1>
       </div>
-      <app-cadastro-editar-checklist-lista></app-cadastro-editar-checklist-lista>
+      <app-cadastro-editar-checklist-lista [itensChecklist]="RetornoListaItens"></app-cadastro-editar-checklist-lista>
     </div>
   </div>
-
 </p-dialog>
